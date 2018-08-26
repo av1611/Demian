@@ -1,12 +1,14 @@
-﻿<core:Window x:Class="Demian.Client.MainWindow"
+﻿<wpf:Window x:Class="Demian.Client.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:core="clr-namespace:DarknessVisible;assembly=DarknessVisible"
+        xmlns:local="clr-namespace:Demian.Client"
+        xmlns:wpf="clr-namespace:Pocket.Wpf;assembly=Pocket.Wpf"
         x:Name="This"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Width="1440" Height="900"
         WindowStartupLocation="CenterScreen">
     <core:WindowSurface ParentWindow="{Binding ElementName=This}">
-        
+        <local:TextEditor Margin="-1 0 -1 -1"/>
     </core:WindowSurface>
-</core:Window>
+</wpf:Window>

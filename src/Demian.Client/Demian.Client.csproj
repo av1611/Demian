@@ -35,7 +35,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DarknessVisible, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\DarknessVisible.1.0.0\lib\net471\DarknessVisible.dll</HintPath>
+      <HintPath>..\packages\DarknessVisible.1.0.1\lib\net471\DarknessVisible.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
+      <HintPath>..\packages\Pocket.Common.1.0.11\lib\net471\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pocket.Common, Version=1.0.11.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Pocket.Common.1.0.11\lib\net471\Pocket.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pocket.Flows, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Pocket.Flows.1.0.1\lib\net471\Pocket.Flows.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Pocket.Wpf, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Pocket.Wpf.1.0.1\lib\net471\Pocket.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\TextEditor.xaml" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,6 +78,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\TextEditor.xaml.cs">
+      <DependentUpon>TextEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

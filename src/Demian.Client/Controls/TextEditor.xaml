@@ -1,0 +1,31 @@
+﻿<RichTextBox x:Class="Demian.Client.TextEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dark="clr-namespace:DarknessVisible;assembly=DarknessVisible">
+    <RichTextBox.Style>
+        <Style TargetType="RichTextBox">
+            <Setter Property="Background" Value="{StaticResource TextInputBackground}"/>
+            <Setter Property="Foreground" Value="{StaticResource LightGray}"/>
+            <Setter Property="SelectionBrush" Value="{StaticResource Black}"/>
+            <Setter Property="SelectionOpacity" Value="0.4"/>
+            <Setter Property="Padding" Value="0 0 0 0"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RichTextBox">
+                        
+                        <Border BorderBrush="{StaticResource Black}" BorderThickness="1"
+                                Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <Grid>
+                                <dark:ScrollViewer x:Name="PART_ContentHost"/>
+                            </Grid>
+                        </Border>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </RichTextBox.Style>
+</RichTextBox>
