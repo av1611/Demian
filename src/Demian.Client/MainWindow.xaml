@@ -7,7 +7,8 @@
         x:Name="This"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         Width="1440" Height="900"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        CaptionHeight="26">
     <core:WindowSurface ParentWindow="{Binding ElementName=This}">
         <local:TextEditor Margin="-1 0 -1 -1"/>
     </core:WindowSurface>

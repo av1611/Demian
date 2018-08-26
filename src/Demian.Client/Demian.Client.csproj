@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DarknessVisible, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\DarknessVisible.1.0.1\lib\net471\DarknessVisible.dll</HintPath>
+      <HintPath>..\packages\DarknessVisible.1.0.2\lib\net471\DarknessVisible.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
@@ -51,7 +51,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Pocket.Wpf, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Pocket.Wpf.1.0.1\lib\net471\Pocket.Wpf.dll</HintPath>
+      <HintPath>..\packages\Pocket.Wpf.1.0.2\lib\net471\Pocket.Wpf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
