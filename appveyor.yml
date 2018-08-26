@@ -1,0 +1,13 @@
+#---------------------------------#
+#  Image                          #
+#---------------------------------#
+image: Visual Studio 2017
+
+#---------------------------------#
+#  Build Script                   #
+#---------------------------------#
+build_script:
+  - ps: .\build.ps1 -Target Default-CI -Verbosity Diagnostic --settings_skipverification=true
+
+# Tests
+test: off

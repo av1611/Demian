@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demian.Core", "Core\Demian.Core.csproj", "{7753EA64-ECAA-4672-9B57-B79574703EB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demian.Tests", "Tests\Demian.Tests.csproj", "{2B075C5D-5AE3-4CB6-B3E3-D4611F9BDB85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demian.Client", "Demian.Client\Demian.Client.csproj", "{753ADCD4-5EA6-4768-A725-11717F1A2DCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7753EA64-ECAA-4672-9B57-B79574703EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7753EA64-ECAA-4672-9B57-B79574703EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7753EA64-ECAA-4672-9B57-B79574703EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7753EA64-ECAA-4672-9B57-B79574703EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B075C5D-5AE3-4CB6-B3E3-D4611F9BDB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B075C5D-5AE3-4CB6-B3E3-D4611F9BDB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B075C5D-5AE3-4CB6-B3E3-D4611F9BDB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B075C5D-5AE3-4CB6-B3E3-D4611F9BDB85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753ADCD4-5EA6-4768-A725-11717F1A2DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753ADCD4-5EA6-4768-A725-11717F1A2DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753ADCD4-5EA6-4768-A725-11717F1A2DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753ADCD4-5EA6-4768-A725-11717F1A2DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
