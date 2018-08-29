@@ -10,9 +10,15 @@
         WindowStartupLocation="CenterScreen"
         CaptionHeight="26">
     <core:WindowSurface ParentWindow="{Binding ElementName=This}">
-        <local:TextEditor Margin="-1 0 -1 -1"
-                          FontFamily="Calibri"
-                          FontSize="20"
-                          Loaded="OnTextEditorLoad"/>
+        <Border Background="{StaticResource TextInputBackground}"
+                BorderBrush="{StaticResource Black}" BorderThickness="1"
+                Margin="-1 0 -1 -1">
+            <local:TextEditor MaxWidth="768" HorizontalAlignment="Center"
+                              Margin="8"
+                              FontFamily="Calibri"
+                              FontSize="20"
+                              Loaded="OnTextEditorLoad"/>
+        </Border>
+        
     </core:WindowSurface>
 </wpf:Window>

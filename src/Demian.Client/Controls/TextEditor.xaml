@@ -4,7 +4,6 @@
              xmlns:dark="clr-namespace:DarknessVisible;assembly=DarknessVisible">
     <RichTextBox.Style>
         <Style TargetType="RichTextBox">
-            <Setter Property="Background" Value="{StaticResource TextInputBackground}"/>
             <Setter Property="Foreground" Value="{StaticResource LightGray}"/>
             <Setter Property="SelectionBrush" Value="{StaticResource Black}"/>
             <Setter Property="SelectionOpacity" Value="0.4"/>
@@ -15,8 +14,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="RichTextBox">
                         
-                        <Border BorderBrush="{StaticResource Black}" BorderThickness="1"
-                                Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <Border Padding="{TemplateBinding Padding}">
                             <Grid>
                                 <dark:ScrollViewer x:Name="PART_ContentHost"/>
                             </Grid>
