@@ -6,19 +6,21 @@ namespace Demian.Client
     public class TextViewModel : ViewModel
     {
         private readonly IText _text;
+        private readonly FlowDocument _document;
         
-        public TextViewModel()
+        public TextViewModel(FlowDocument document)
         {
             _text = new ConstText("Hello!");
+            _document = document;
         }
 
-        public void Print(FlowDocument document)
+        public void Print()
         {
             var content = new Run(_text.Content);
             var paragraph = new Paragraph(content);
             
-            document.Blocks.Clear();
-            document.Blocks.Add(paragraph);
+            _document.Blocks.Clear();
+            _document.Blocks.Add(paragraph);
         }
     }
 }

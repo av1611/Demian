@@ -15,9 +15,9 @@ namespace Demian.Client
         private void OnTextEditorLoad(object sender, RoutedEventArgs e)
         {
             _editor = (TextEditor) sender;
-            _viewModel = new TextViewModel();
             
-            _viewModel.Print(_editor.Document);
+            _viewModel = new TextViewModel(_editor.Document);
+            _viewModel.Print();
         }
     }
 }
