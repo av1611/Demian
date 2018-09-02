@@ -9,6 +9,11 @@
         Width="1440" Height="900"
         WindowStartupLocation="CenterScreen"
         CaptionHeight="26">
+    <wpf:Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.SaveCommand}" Executed="OnSave"/>
+        <CommandBinding Command="{x:Static local:MainWindow.LoadCommand}" Executed="OnLoad"/>
+    </wpf:Window.CommandBindings>
+    
     <core:WindowSurface ParentWindow="{Binding ElementName=This}">
         <Border Background="{StaticResource TextInputBackground}"
                 BorderBrush="{StaticResource Black}" BorderThickness="1"
