@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Input;
+using Microsoft.Win32;
 
 namespace Demian.Client
 {
@@ -32,7 +35,16 @@ namespace Demian.Client
 
         private void OnSave(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Save");
+            var dialog = new SaveFileDialog
+            {
+                FileName = "TextDocument",
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            var saved = dialog.ShowDialog();
+            if (saved.GetValueOrDefault())
+                _viewModel.Save(dialog.FileName);
         }
 
         private void OnLoad(object sender, ExecutedRoutedEventArgs e)

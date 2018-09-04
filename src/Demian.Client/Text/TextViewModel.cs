@@ -1,4 +1,5 @@
-﻿using System.Windows.Documents;
+﻿using System.IO;
+using System.Windows.Documents;
 using Pocket.Wpf;
 
 namespace Demian.Client
@@ -21,6 +22,11 @@ namespace Demian.Client
             
             _document.Blocks.Clear();
             _document.Blocks.Add(paragraph);
+        }
+
+        public void Save(string path)
+        {
+            File.WriteAllText(path, "Test");
         }
     }
 }
