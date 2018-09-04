@@ -70,7 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Text\Runs\CharactersRun.cs" />
     <Compile Include="Text\TextViewModel.cs" />
     <Page Include="Controls\TextEditor.xaml" />
     <Page Include="MainWindow.xaml">

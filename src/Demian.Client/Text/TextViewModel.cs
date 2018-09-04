@@ -17,7 +17,7 @@ namespace Demian.Client
 
         public void Print()
         {
-            var content = new CharactersRun(_text.Characters);
+            var content = new Run(_text.AsString());
             var paragraph = new Paragraph(content);
             
             _document.Blocks.Clear();
@@ -26,7 +26,7 @@ namespace Demian.Client
 
         public void Save(string path)
         {
-            File.WriteAllText(path, "Test");
+            File.WriteAllText(path, _text.AsString());
         }
     }
 }
