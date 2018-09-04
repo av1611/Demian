@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Text\ConstText.cs" />
     <Compile Include="Text\Core\IText.cs" />
-    <Compile Include="Text\FileText.cs" />
+    <Compile Include="Text\Tokens\Character.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

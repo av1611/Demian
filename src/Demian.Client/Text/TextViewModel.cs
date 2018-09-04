@@ -16,7 +16,7 @@ namespace Demian.Client
 
         public void Print()
         {
-            var content = new Run(_text.Content);
+            var content = new CharactersRun(_text.Characters);
             var paragraph = new Paragraph(content);
             
             _document.Blocks.Clear();

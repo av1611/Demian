@@ -1,7 +1,9 @@
-﻿namespace Demian
+﻿using System.Collections.Generic;
+
+namespace Demian
 {
     public interface IText
     {
-        string Content { get; }
+        IEnumerable<Character> Characters { get; }
     }
 }

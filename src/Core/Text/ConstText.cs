@@ -1,12 +1,17 @@
-﻿namespace Demian
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Demian
 {
     public sealed class ConstText : IText
     {
-        public ConstText(string content)
+        public ConstText(string text)
         {
-            Content = content;
+            Characters = text
+                .Select(x => new Character(x))
+                .ToList();
         }
-
-        public string Content { get; }
+        
+        public IEnumerable<Character> Characters { get; }
     }
 }
