@@ -6,8 +6,8 @@ namespace Demian.Client
 {
     public class TextViewModel : ViewModel
     {
-        private readonly IText _text;
         private readonly FlowDocument _document;
+        private IText _text;
         
         public TextViewModel(FlowDocument document)
         {
@@ -27,6 +27,15 @@ namespace Demian.Client
         public void Save(string path)
         {
             File.WriteAllText(path, _text.AsString());
+        }
+
+        public void Load(string path)
+        {
+            var text = File.ReadAllText(path);
+
+            _text = new ConstText(text);
+            
+            Print();
         }
     }
 }

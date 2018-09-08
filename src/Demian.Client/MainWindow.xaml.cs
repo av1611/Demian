@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 
@@ -49,7 +47,15 @@ namespace Demian.Client
 
         private void OnLoad(object sender, ExecutedRoutedEventArgs e)
         {
-            MessageBox.Show("Load");
+            var dialog = new OpenFileDialog
+            {
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
+            };
+
+            var opened = dialog.ShowDialog();
+            if (opened.GetValueOrDefault())
+                _viewModel.Load(dialog.FileName);
         }
     }
 }
