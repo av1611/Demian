@@ -12,6 +12,7 @@
     <wpf:Window.CommandBindings>
         <CommandBinding Command="{x:Static local:MainWindow.SaveCommand}" Executed="OnSave"/>
         <CommandBinding Command="{x:Static local:MainWindow.LoadCommand}" Executed="OnLoad"/>
+        <CommandBinding Command="{x:Static local:MainWindow.ConsoleOpenCommand}" Executed="OnConsoleOpen"/>
     </wpf:Window.CommandBindings>
     
     <core:WindowSurface ParentWindow="{Binding ElementName=This}">
@@ -25,6 +26,5 @@
                               Loaded="OnTextEditorLoad"
                               TextChanged="OnTextEditorChange"/>
         </Border>
-        
     </core:WindowSurface>
 </wpf:Window>

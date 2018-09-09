@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
+using Demian.Client.Common;
 using Microsoft.Win32;
 
 namespace Demian.Client
@@ -10,6 +10,10 @@ namespace Demian.Client
     {
         public static readonly RoutedCommand SaveCommand = new RoutedCommand();
         public static readonly RoutedCommand LoadCommand = new RoutedCommand();
+        public static readonly RoutedCommand ConsoleOpenCommand = new RoutedCommand();
+
+        private readonly ILog _log;
+        private readonly ConsoleWindow _console;
         
         private TextEditor _editor;
         private TextViewModel _viewModel;
@@ -20,10 +24,15 @@ namespace Demian.Client
         {
             SaveCommand.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
             LoadCommand.InputGestures.Add(new KeyGesture(Key.O, ModifierKeys.Control));
+            ConsoleOpenCommand.InputGestures.Add(new KeyGesture(Key.OemTilde, ModifierKeys.Control));
         }
         
         public MainWindow()
         {
+            // TODO: Initialize console only in Debug mode.
+            _console = new ConsoleWindow();
+            _log = new ConsoleWindowLog(_console);
+            
             InitializeComponent();
         }
 
@@ -71,6 +80,8 @@ namespace Demian.Client
             
             foreach (var change in e.Changes)
             {
+                _log.Info($"Trying to apply [ Offset: {change.Offset} | Added: {change.AddedLength} | Removed: {change.RemovedLength} ] text change.");
+                
                 var maybeRange = change.AsRangeIn(_editor.Document);
                 if (maybeRange.IsNothing)
                     continue;
@@ -80,10 +91,30 @@ namespace Demian.Client
                 var offset = paragraph.ContentStart.GetOffsetToPosition(maybeRange.Value.Start) - 1;
 
                 if (change.AddedLength > 0)
-                    _viewModel.Text.Write(maybeRange.Value.Text, offset);
+                {
+                    _log.Info($"Adding \"{maybeRange.Value.Text}\" at [ {offset} ] offset.");
+                    
+                    var written = _viewModel.Text.Write(maybeRange.Value.Text, offset);
+                    if (written.Fail)
+                        _log.Info($"Failed to write: {written.Error}.");
+                }
                 else
-                    _viewModel.Text.Remove(change.RemovedLength, offset);
+                {
+                    _log.Info($"Removing [ {change.RemovedLength} ] characters at [ {offset} ] offset.");
+                    
+                    var removed = _viewModel.Text.Remove(change.RemovedLength, offset);
+                    if (removed.Fail)
+                        _log.Info($"Failed to remove: {removed.Error}.");
+                }
             }
+        }
+
+        private void OnConsoleOpen(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (_console.IsVisible)
+                _console.Hide();
+            else
+                _console.Show();
         }
     }
 }
