@@ -75,11 +75,14 @@ namespace Demian.Client
                 if (maybeRange.IsNothing)
                     continue;
 
+                // TODO: Fix offset calculation for more paragraphs and lines.
                 var paragraph = maybeRange.Value.Start.Paragraph;
                 var offset = paragraph.ContentStart.GetOffsetToPosition(maybeRange.Value.Start) - 1;
 
                 if (change.AddedLength > 0)
                     _viewModel.Text.Write(maybeRange.Value.Text, offset);
+                else
+                    _viewModel.Text.Remove(change.RemovedLength, offset);
             }
         }
     }
