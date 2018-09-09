@@ -7,17 +7,19 @@ namespace Demian.Client
     public class TextViewModel : ViewModel
     {
         private readonly FlowDocument _document;
-        private IText _text;
-        
+
         public TextViewModel(FlowDocument document)
         {
-            _text = new ConstText("Hello!");
+            Text = new InMemoryText("");
+            
             _document = document;
         }
 
+        public IText Text { get; private set; }
+
         public void Print()
         {
-            var content = new Run(_text.AsString());
+            var content = new Run(Text.AsString());
             var paragraph = new Paragraph(content);
             
             _document.Blocks.Clear();
@@ -26,14 +28,14 @@ namespace Demian.Client
 
         public void Save(string path)
         {
-            File.WriteAllText(path, _text.AsString());
+            File.WriteAllText(path, Text.AsString());
         }
 
         public void Load(string path)
         {
             var text = File.ReadAllText(path);
 
-            _text = new ConstText(text);
+            Text = new InMemoryText(text);
             
             Print();
         }

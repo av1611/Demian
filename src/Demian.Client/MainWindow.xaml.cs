@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using Microsoft.Win32;
 
@@ -11,6 +13,8 @@ namespace Demian.Client
         
         private TextEditor _editor;
         private TextViewModel _viewModel;
+
+        private bool _loaded;
 
         static MainWindow()
         {
@@ -29,6 +33,8 @@ namespace Demian.Client
             
             _viewModel = new TextViewModel(_editor.Document);
             _viewModel.Print();
+
+            _loaded = true;
         }
 
         private void OnSave(object sender, ExecutedRoutedEventArgs e)
@@ -56,6 +62,25 @@ namespace Demian.Client
             var opened = dialog.ShowDialog();
             if (opened.GetValueOrDefault())
                 _viewModel.Load(dialog.FileName);
+        }
+
+        private void OnTextEditorChange(object sender, TextChangedEventArgs e)
+        {
+            if (!_loaded)
+                return;
+            
+            foreach (var change in e.Changes)
+            {
+                var maybeRange = change.AsRangeIn(_editor.Document);
+                if (maybeRange.IsNothing)
+                    continue;
+
+                var paragraph = maybeRange.Value.Start.Paragraph;
+                var offset = paragraph.ContentStart.GetOffsetToPosition(maybeRange.Value.Start) - 1;
+
+                if (change.AddedLength > 0)
+                    _viewModel.Text.Write(maybeRange.Value.Text, offset);
+            }
         }
     }
 }

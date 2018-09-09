@@ -22,7 +22,8 @@
                               Margin="8"
                               FontFamily="Calibri"
                               FontSize="20"
-                              Loaded="OnTextEditorLoad"/>
+                              Loaded="OnTextEditorLoad"
+                              TextChanged="OnTextEditorChange"/>
         </Border>
         
     </core:WindowSurface>
