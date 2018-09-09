@@ -8,18 +8,18 @@ namespace Demian
     {
         private struct Change
         {
-            public static Change Add(string value, int at) => new Change(value, at, 0);
-            public static Change Remove(int at, int count) => new Change(null, at, count);
+            public static Change Add(string value, int at) => new Change(value, 0, at);
+            public static Change Remove(int count, int at) => new Change(null, count, at);
             
             private readonly string _value;
             private readonly int _index;
             private readonly int _count;
 
-            public Change(string value, int index, int count)
+            public Change(string value, int count, int index)
             {
                 _value = value;
-                _index = index;
                 _count = count;
+                _index = index;
             }
 
             public void Apply(InMemoryText text)
@@ -69,6 +69,21 @@ namespace Demian
             
             _changes.Add(Change.Add(value, at));
             _length += value.Length;
+            
+            return Result.Succeded();
+        }
+
+        public Result Remove(int count, int at)
+        {
+            if (count <= 0)
+                return Result.Failed($"Couldn't remove characters at [ {at} ]: specified [ {count} ] length is less or equals to zero.");
+            if (at < 0)
+                return Result.Failed($"Couldn't remove [ {count} ] characters: index [ {at} ] is less than zero.");
+            if (at + count > _length)
+                return Result.Failed($"Couldn't remove [ {count} ] characters at [ {at} ]: there are only [ {_length} ] of them.");
+            
+            _changes.Add(Change.Remove(count, at));
+            _length -= count;
             
             return Result.Succeded();
         }

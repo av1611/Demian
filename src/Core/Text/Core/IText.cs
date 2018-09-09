@@ -8,5 +8,6 @@ namespace Demian
         IEnumerable<Character> Characters { get; }
 
         Result Write(string value, int at);
+        Result Remove(int count, int at);
     }
 }

@@ -53,5 +53,43 @@ namespace Demian.Tests.Text
         [Fact]
         public void Write_ShouldFail_IfIndexIsGreaterThanText() =>
             new InMemoryText("1234").Write("", 5).Fail.ShouldBe(true);
+
+        [Theory]
+        [InlineData("Hello", 2, 0)]
+        [InlineData("Hello", 3, 0)]
+        [InlineData("Hello", 5, 0)]
+        [InlineData("Hello", 4, 1)]
+        [InlineData("Hello", 3, 2)]
+        [InlineData("Hello", 2, 3)]
+        public void Remove_ShouldRemovePartOfTextAtSpecifiedIndex(string initial, int countToRemove, int at)
+        {
+            var text = new InMemoryText(initial);
+            var textAsString = text.AsString();
+
+            text.Remove(countToRemove, at);
+            textAsString = textAsString.Remove(at, countToRemove);
+
+            text.AsString().ShouldBe(textAsString);
+        }
+        
+        [Fact]
+        public void Remove_ShouldFail_IfLengthIsNegative() =>
+            new InMemoryText("1").Remove(-1, 0).Fail.ShouldBe(true);
+        
+        [Fact]
+        public void Remove_ShouldFail_IfLengthIsZero() =>
+            new InMemoryText("1").Remove(0, 0).Fail.ShouldBe(true);
+        
+        [Fact]
+        public void Remove_ShouldFail_IfLengthIsOverflowText() =>
+            new InMemoryText("1").Remove(2, 0).Fail.ShouldBe(true);
+        
+        [Fact]
+        public void Remove_ShouldFail_IfIndexIsLessThanZero() =>
+            new InMemoryText("1").Remove(1, -1).Fail.ShouldBe(true);
+        
+        [Fact]
+        public void Remove_ShouldFail_IfIndexIsGreaterThanText() =>
+            new InMemoryText("1234").Remove(1, 5).Fail.ShouldBe(true);
     }
 }
