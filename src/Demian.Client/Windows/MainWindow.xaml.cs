@@ -31,6 +31,8 @@ namespace Demian.Client
         {
             // TODO: Initialize console only in Debug mode.
             _console = new ConsoleWindow();
+            _console.Hide();
+            
             _log = new ConsoleWindowLog(_console);
             
             InitializeComponent();

@@ -18,7 +18,7 @@
                 Margin="-1 0 -1 -1">
             <core:ScrollViewer>
                 <TextBlock Margin="4"
-                    FontSize="16" FontFamily="Courier New"
+                    FontSize="14" FontFamily="Courier New"
                     Foreground="{StaticResource LightGray}"
                     Loaded="OnTextBlockLoad"/>
             </core:ScrollViewer>
