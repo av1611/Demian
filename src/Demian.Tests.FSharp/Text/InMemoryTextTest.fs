@@ -14,7 +14,10 @@ let characters (text:InMemoryText) = text.Characters.ToArray()
 let asCharacters (value:string) = value.Select(fun x -> new Character(x)).ToArray()
 let writtenTo (value:string) (text:string) (at:int) = (text |> InMemoryText).Write(value, at)
 
-let write (value:string) (at:int) (text:string) = (text |> InMemoryText).Write(value, at)
+let write (part:string) (at:int) (value:string) =
+    let text = value |> asText
+    text.Write(part, at) |> ignore;
+    text.AsString()
 
 [<Fact>]
 let ``Text should fail to construct from null`` () =
@@ -30,4 +33,8 @@ let ``Text constructed from string should contain same characters`` (value) =
     
 [<Fact>]
 let ``After writing "1" at 0 in "Hello" it should become "1Hello"``() =
+    write "1" <| at 0 <| in' "Hello" |> should equal "1Hello"
+    
+[<Fact>]
+let ``After writing "1" at 1 in "Hello" it should become "H1ello"``() =
     write "1" <| at 0 <| in' "Hello" |> should equal "1Hello"
