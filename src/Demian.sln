@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demian.Core", "Core\Demian.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demian.Client", "Client\Demian.Client.csproj", "{753ADCD4-5EA6-4768-A725-11717F1A2DCF}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests.FSharp", "Tests.FSharp\Demian.Tests.FSharp.fsproj", "{71B4763F-4FA3-4AAB-8068-9E9B3FBC4AEA}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Tests", "Tests\Demian.Tests.FSharp.fsproj", "{71B4763F-4FA3-4AAB-8068-9E9B3FBC4AEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

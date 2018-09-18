@@ -19,7 +19,7 @@ var codecovApiKey = EnvironmentVariable("codecovApiKey") ?? Argument("codecovApi
 // Configured paths.
 var solutionRootPath = "./src";
 var solutionPath = $"{solutionRootPath}/{ProjectName}.sln";
-var testsPath = GetFiles($"{solutionRootPath}/Tests/bin/{configuration}/*.Tests.dll");
+var testsPath = GetFiles($"{solutionRootPath}/Tests/bin/{configuration}/netcoreapp2.1/*.Tests.dll");
 
 // Tasks.
 Task("Clean")
