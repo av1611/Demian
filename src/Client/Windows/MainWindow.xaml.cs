@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Demian.Client.Common;
 using Microsoft.Win32;
+using Pocket.Common;
 
 namespace Demian.Client
 {
@@ -90,7 +92,7 @@ namespace Demian.Client
 
                 // TODO: Fix offset calculation for more paragraphs and lines.
                 var paragraph = maybeRange.Value.Start.Paragraph;
-                var offset = paragraph.ContentStart.GetOffsetToPosition(maybeRange.Value.Start) - 1;
+                var offset = paragraph?.ContentStart.GetOffsetToPosition(maybeRange.Value.Start) - 1 ?? 0;
 
                 if (change.AddedLength > 0)
                 {
@@ -102,9 +104,11 @@ namespace Demian.Client
                 }
                 else
                 {
-                    _log.Info($"Removing [ {change.RemovedLength} ] characters at [ {offset} ] offset.");
+                    var length = change.RemovedLength.Or(_viewModel.Text.Characters.Count()).IfGreater();
                     
-                    var removed = _viewModel.Text.Remove(change.RemovedLength, offset);
+                    _log.Info($"Removing [ {length} ] characters at [ {offset} ] offset.");
+
+                    var removed = _viewModel.Text.Remove(length, offset);
                     if (removed.Fail)
                         _log.Info($"Failed to remove: {removed.Error}.");
                 }

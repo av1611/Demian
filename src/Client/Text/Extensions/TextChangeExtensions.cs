@@ -17,7 +17,7 @@ namespace Demian.Client
                 : self.Offset + self.RemovedLength;
             var end = document.ContentStart.GetPositionAtOffset(endOffset);
             if (end == null)
-                return Maybe<TextRange>.Nothing;
+                end = document.ContentEnd;
 
             return new TextRange(start, end).Maybe();
         }
